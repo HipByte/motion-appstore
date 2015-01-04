@@ -16,17 +16,15 @@ module Motion; class Command
 
     def run
       unless File.exist?('Rakefile')
-        $stderr.puts "Run on Root Directoy of RubyMotion Project"
-        exit 1
+        help! "Run on Root Directoy of RubyMotion Project"
       end
 
       # There might be *.ipa in Development and Release directory.
       # In here, it takes *.ipa in Release with #last method
       archive = Dir.glob("./build/*/*.ipa").last
-      puts "** Validate #{archive} **"
+      puts bold("Validate: ") + archive
       unless archive
-        $stderr.puts "First, need to create .ipa with `rake archive' or `rake archive:distribution'"
-        exit 1
+        help! "Can't find *.ipa. First, need to create *.ipa with `rake archive' or `rake archive:distribution'"
       end
 
       altool = "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
@@ -35,6 +33,10 @@ module Motion; class Command
     end
 
     private
+
+    def bold(msg)
+      ansi_output? ? "\e[1;32m" + msg + "\e[0m" : msg
+    end
 
     def password
       # retrive password from keychain which might be created by Xcode
@@ -50,7 +52,7 @@ module Motion; class Command
       rescue LoadError
       end
 
-      prompt = "Enter your password: "
+      prompt = bold("Enter your password: ")
       if STDIN.respond_to?(:noecho)
         print prompt
         STDIN.noecho(&:gets).strip
