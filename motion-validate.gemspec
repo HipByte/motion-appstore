@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.version       = VERSION
   spec.authors       = ["Watson"]
   spec.email         = ["watson1978@gmail.com"]
-  spec.description   = %q{test a gem description}
-  spec.summary       = %q{test a gem summary}
-  spec.homepage      = ""
-  spec.license       = ""
+  spec.description   = %q{This is RubyMotion plugin which provides validation command.}
+  spec.summary       = %q{This is RubyMotion plugin which provides validation command.}
+  spec.homepage      = "https://github.com/Watson1978/motion-validate"
+  spec.license       = "MIT"
   spec.extensions    = ['ext/extconf.rb'] # Command-Line Plugin Installer
 
   files = []
