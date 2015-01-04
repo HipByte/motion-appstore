@@ -2,6 +2,20 @@
 
 This is RubyMotion plugin which provides `validate` and `upload` commands for iTunes Connect.
 
+## Install
+
+```
+$ gem install motion-appstore
+```
+
+If you like to install manually,
+
+```
+$ git clone https://github.com/Watson1978/motion-appstore.git
+$ cd motion-appstore
+$ rake install
+```
+
 ## Usage
 
 ```
