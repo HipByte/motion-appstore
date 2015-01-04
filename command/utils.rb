@@ -6,11 +6,11 @@ module Utils
       help! "Run on Root Directoy of RubyMotion Project"
     end
 
-    # There might be *.ipa in Development and Release directory.
-    # In here, it takes *.ipa in Release with #last method
-    archive = Dir.glob("./build/*/*.ipa").last
+    # There might be *.ipa or *.pkg in Development and Release directory.
+    # In here, it takes *.ipa or *.pkg in Release with #last method
+    archive = Dir.glob("./build/*/*.{ipa,pkg}").last
     unless archive
-      help! "Can't find *.ipa. First, need to create *.ipa with `rake archive' or `rake archive:distribution'"
+      help! "Can't find *.ipa or *.pkg. First, need to create archive file with `rake archive' or `rake archive:distribution'"
     end
     archive
   end
