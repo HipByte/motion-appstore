@@ -25,7 +25,7 @@ Validate: ./build/iPhoneOS-8.1-Release/HelloActions.ipa
 )
 ```
 
-The app is good to submit to AppStore:
+The app is good to submit to iTunes Connect:
 
 ```
 $ motion validate watson1978@gmail.com
