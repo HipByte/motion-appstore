@@ -1,10 +1,10 @@
 require_relative 'utils'
 
 module Motion; class Command
-  class Validate < Command
+  class Upload < Command
     include Utils
 
-    self.summary = 'Validate an archived app'
+    self.summary = 'Upload an archived app to iTunes Connect'
     self.arguments = 'APPLE-ID'
 
     def initialize(argv)
@@ -19,9 +19,9 @@ module Motion; class Command
 
     def run
       archive = archive_path()
-      puts bold("Validate: ") + archive
+      puts bold("Upload: ") + archive
 
-      system "\"#{ALTOOL}\" -v -f #{archive} -u #{@adc_id} -p #{password}"
+      system "\"#{ALTOOL}\" --upload-app -f #{archive} -u #{@adc_id} -p #{password}"
       exit $?.exitstatus
     end
 

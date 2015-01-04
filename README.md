@@ -1,12 +1,13 @@
-# motion-validate
+# motion-appstore
 
-This is RubyMotion plugin which provides validation command before submitting to AppStore.
+This is RubyMotion plugin which provides `validate` and `upload` commands for iTunes Connect.
 
 ## Usage
 
 ```
 $ rake archive:distribution
 $ motion validate APPLE-ID
+$ motion upload APPLE-ID
 ```
 
 Example)

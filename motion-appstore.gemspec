@@ -6,9 +6,9 @@ Gem::Specification.new do |spec|
   spec.version       = VERSION
   spec.authors       = ["Watson"]
   spec.email         = ["watson1978@gmail.com"]
-  spec.description   = %q{This is RubyMotion plugin which provides validation command.}
-  spec.summary       = %q{This is RubyMotion plugin which provides validation command.}
-  spec.homepage      = "https://github.com/Watson1978/motion-validate"
+  spec.description   = %q{This is RubyMotion plugin which provides commands deal with iTunes Connect.}
+  spec.summary       = %q{This is RubyMotion plugin which provides commands deal with iTunes Connect.}
+  spec.homepage      = "https://github.com/Watson1978/motion-appstore"
   spec.license       = "MIT"
   spec.extensions    = ['ext/extconf.rb'] # Command-Line Plugin Installer
 
