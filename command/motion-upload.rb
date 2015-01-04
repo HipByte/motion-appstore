@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require_relative 'utils'
 
 module Motion; class Command
@@ -21,8 +22,8 @@ module Motion; class Command
       archive = archive_path()
       puts bold("Upload: ") + archive
 
-      system "\"#{ALTOOL}\" --upload-app -f #{archive} -u #{@adc_id} -p #{password}"
-      exit $?.exitstatus
+      exitcode = altool("--upload-app -f #{archive} -u #{@adc_id} -p #{password}")
+      exit(exitcode)
     end
 
   end
