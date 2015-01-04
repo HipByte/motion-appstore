@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 
 Gem::Specification.new do |spec|
   spec.name          = "motion-validate"
