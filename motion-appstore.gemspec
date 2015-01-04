@@ -2,7 +2,7 @@
 VERSION = "1.0.2"
 
 Gem::Specification.new do |spec|
-  spec.name          = "motion-validate"
+  spec.name          = "motion-appstore"
   spec.version       = VERSION
   spec.authors       = ["Watson"]
   spec.email         = ["watson1978@gmail.com"]
