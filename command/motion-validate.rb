@@ -31,6 +31,7 @@ module Motion; class Command
 
       altool = "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
       system "\"#{altool}\" -v -f #{archive} -u #{@adc_id} -p #{password}"
+      exit $?.exitstatus
     end
 
     private
