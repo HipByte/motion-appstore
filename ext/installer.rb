@@ -6,7 +6,7 @@ def install_plugins
 
   Dir.glob(File.join(File.dirname(__FILE__), "../command/motion-*")).each do |path|
     file = File.basename(path)
-    src = File.expand_path(file)
+    src = File.expand_path(path)
     dst = File.join(dir, file)
 
     FileUtils.mkdir_p(dir) unless File.exist?(dir)
