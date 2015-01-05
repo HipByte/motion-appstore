@@ -5,7 +5,7 @@ module Motion; class Command
   class Upload < Command
     include Utils
 
-    self.summary = 'Upload an archived app to iTunes Connect'
+    self.summary = 'Upload an archived app to iTunes Connect.'
     self.arguments = 'APPLE-ID'
 
     def initialize(argv)

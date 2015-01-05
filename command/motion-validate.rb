@@ -5,7 +5,7 @@ module Motion; class Command
   class Validate < Command
     include Utils
 
-    self.summary = 'Validate an archived app'
+    self.summary = 'Validate an archived app.'
     self.arguments = 'APPLE-ID'
 
     def initialize(argv)

@@ -12,13 +12,13 @@ module Utils
 
   def archive_path
     unless File.exist?('Rakefile')
-      help! "Run on Root Directoy of RubyMotion Project"
+      help! "Run on root directoy of RubyMotion project."
     end
 
     # select *.ipa or *.pkg in Release directory.
     archive = Dir.glob("./build/{iPhoneOS,MacOSX}*-Release/*.{ipa,pkg}").first
     unless archive
-      help! "Can't find *.ipa or *.pkg. First, need to create archive file with `rake archive:distribution'"
+      help! "Can't find *.ipa or *.pkg. First, need to create archive file with `rake archive:distribution'."
     end
     archive
   end
