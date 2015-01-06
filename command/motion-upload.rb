@@ -22,7 +22,7 @@ module Motion; class Command
       archive = archive_path()
       puts bold("Upload: ") + archive
 
-      exitcode = altool("--upload-app -f #{archive} -u #{@adc_id} -p #{password}")
+      exitcode = altool("--upload-app -f \"#{archive}\" -u \"#{@adc_id}\" -p \"#{password}\"")
       exit(exitcode)
     end
 
