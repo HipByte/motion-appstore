@@ -66,3 +66,5 @@ $ security add-internet-password -a <your-email-address> -j default -r htps -s i
 ```
 
 Your password will then be safely stored in the keychain and accessible by motion-appstore.
+
+If you like GUI, you can add your password into the keychain by adding account via Xcode [Preferences...]->[Accounts] configuration.
