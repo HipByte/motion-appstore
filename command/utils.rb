@@ -73,16 +73,18 @@ module Utils
 
   def parse_nslog_message(message)
     messages = []
-    message.split("\n").each do |msg|
+    tmp = message.split("\n")
+    tmp.shift if tmp[0].end_with?("Error: (")
+    tmp.each do |msg|
       msg.strip!
       if m = msg.match(/(No errors.+)/)
         # success
         messages << m[1]
-      elsif m = msg.match(/^"Error Domain=[^"]+"(.+)\\" UserInfo=.+/)
+      elsif m = msg.match(/NSLocalizedDescription=(.+), NSLocalizedFailureReason=/)
         # error
         messages << m[1]
       elsif m = msg.match(/(Error:.+)/)
-        # other errors (password error...)
+        # other errors
         messages << m[1]
       end
     end
