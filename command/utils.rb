@@ -65,10 +65,12 @@ module Utils
     prompt = bold("Enter your password: ")
     if STDIN.respond_to?(:noecho)
       print prompt
-      STDIN.noecho(&:gets).strip
+      pass = STDIN.noecho(&:gets).strip
     else
-      `read -s -p "#{prompt}" password; echo $password`.strip
+      pass = `read -s -p "#{prompt}" password; echo $password`.strip
     end
+    puts ""
+    pass
   end
 
   def parse_nslog_message(message)
