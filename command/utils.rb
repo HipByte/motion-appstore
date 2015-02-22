@@ -81,6 +81,9 @@ module Utils
       elsif m = msg.match(/^"Error Domain=[^"]+"(.+)\\" UserInfo=.+/)
         # error
         messages << m[1]
+      elsif m = msg.match(/(Error:.+)/)
+        # other errors (password error...)
+        messages << m[1]
       end
     end
     messages
