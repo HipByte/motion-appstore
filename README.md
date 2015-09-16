@@ -20,8 +20,8 @@ $ rake install
 
 ```
 $ rake archive:distribution
-$ motion validate APPLE-ID
-$ motion upload APPLE-ID
+$ motion validate EMAIL-USED-TO-SIGN-IN-TO-APPLE-DEV
+$ motion upload EMAIL-USED-TO-SIGN-IN-TO-APPLE-DEV
 ```
 
 ### validate
