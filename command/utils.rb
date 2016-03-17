@@ -50,7 +50,7 @@ module Utils
 
   def password
     # retrive password from keychain which might be created by Xcode
-    `security find-internet-password -g -a #{@adc_id} -s idmsa.apple.com -r htps 2>&1`.each_line { |line|
+    `security find-internet-password -g -a \"#{@adc_id}\" -s idmsa.apple.com -r htps 2>&1`.each_line { |line|
       if line =~ /^password: "(.+)"$/
         return $1
       end
