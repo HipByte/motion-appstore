@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-VERSION = "1.0.8"
+VERSION = "1.0.9"
 
 Gem::Specification.new do |spec|
   spec.name          = "motion-appstore"
