@@ -28,7 +28,18 @@ module Utils
   ALTOOL = "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
 
   def altool(arg)
+    if verbose?
+      puts "----------------------------------------"
+      puts " COMMAND :                              "
+      puts "\"#{ALTOOL}\" #{arg}"
+    end
     message = `\"#{ALTOOL}\" #{arg} 2>&1`
+    if verbose?
+      puts "----------------------------------------"
+      puts " RETURN :                               "
+      puts message
+    end
+
     messages = parse_nslog_message(message)
     print_messages(messages, $?.exitstatus == 0)
 
@@ -50,7 +61,12 @@ module Utils
 
   def password
     # retrive password from keychain which might be created by Xcode
+    if verbose?
+      puts "----------------------------------------"
+      puts " PASSWORD :                             "
+    end
     `security find-internet-password -g -a \"#{@adc_id}\" -s idmsa.apple.com -r htps 2>&1`.each_line { |line|
+      puts line if verbose?
       if line =~ /^password: "(.+)"$/
         return $1
       end
@@ -70,6 +86,7 @@ module Utils
       pass = `read -s -p "#{prompt}" password; echo $password`.strip
     end
     puts ""
+    puts pass if verbose?
     pass
   end
 
