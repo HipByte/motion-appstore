@@ -46,13 +46,42 @@ module Utils
     $?.exitstatus
   end
 
-  def archive_path
+  def config
     unless File.exist?('Rakefile')
       help! "Run on root directoy of RubyMotion project."
     end
 
+    @config ||= `rake config`.strip
+    if @config.empty?
+      # for motion-game/flow
+      @config = `rake ios:config`.strip
+    end
+
+    @config.lines
+  end
+
+  def build_dir
+    config.each do |line|
+      if line =~ /build_dir\s+: \"(.+)\"/
+        return $1
+      end
+    end
+    return nil
+  end
+
+  def deployment_target
+    config.each do |line|
+      if line =~ /deployment_target\s+: \"(.+)\"/
+        return $1
+      end
+    end
+    return nil
+  end
+
+  def archive_path
     # select *.ipa or *.pkg in Release directory.
-    archive = Dir.glob("./build/{iPhoneOS,MacOSX,AppleTVOS}*-Release/*.{ipa,pkg}").first
+    target = deployment_target || "*"
+    archive = Dir.glob("./#{build_dir}/{iPhoneOS,MacOSX,AppleTVOS}-#{target}-Release/*.{ipa,pkg}").first
     unless archive
       help! "Can't find *.ipa or *.pkg. First, need to create archive file with `rake archive:distribution'."
     end
