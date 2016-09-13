@@ -51,31 +51,30 @@ module Utils
       help! "Run on root directoy of RubyMotion project."
     end
 
-    @config ||= `rake config`.strip
-    if @config.empty?
-      # for motion-game/flow
-      @config = `rake ios:config`.strip
-    end
+    unless @config
+      config = `rake config`.strip
+      if config.empty?
+        # for motion-game/flow
+        config = `rake ios:config`.strip
+      end
 
-    @config.lines
+      @config = {}
+      config.lines.each do |line|
+        m = line.strip.match(/(.+)\s+: (.+)/)
+        k = $1
+        v = eval($2)
+        @config[k.strip] = v
+      end
+    end
+    @config
   end
 
   def build_dir
-    config.each do |line|
-      if line =~ /build_dir\s+: \"(.+)\"/
-        return $1
-      end
-    end
-    return nil
+    config['build_dir']
   end
 
   def deployment_target
-    config.each do |line|
-      if line =~ /deployment_target\s+: \"(.+)\"/
-        return $1
-      end
-    end
-    return nil
+    config['deployment_target']
   end
 
   def archive_path
