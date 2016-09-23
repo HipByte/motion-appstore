@@ -61,9 +61,11 @@ module Utils
       @config = {}
       config.lines.each do |line|
         m = line.strip.match(/(.+)\s+: (.+)/)
+        if $1&&$2
         k = $1
         v = eval($2)
         @config[k.strip] = v
+        end
       end
     end
     @config
