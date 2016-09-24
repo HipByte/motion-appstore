@@ -46,6 +46,11 @@ module Utils
     $?.exitstatus
   end
 
+  CONFIG_KEY = %w(
+    build_dir
+    deployment_target      
+  )
+
   def config
     unless File.exist?('Rakefile')
       help! "Run on root directoy of RubyMotion project."
@@ -60,10 +65,12 @@ module Utils
 
       @config = {}
       config.lines.each do |line|
-        m = line.strip.match(/(.+)\s+: (.+)/)
-        k = $1
-        v = eval($2)
-        @config[k.strip] = v
+        m = line.strip.match(/(\w+)\s+: (.+)$/)
+        if CONFIG_KEY.include?($1)
+          k = $1
+          v = eval($2.strip)
+          @config[k] = v
+        end
       end
     end
     @config
