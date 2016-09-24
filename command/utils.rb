@@ -87,7 +87,7 @@ module Utils
   def archive_path
     # select *.ipa or *.pkg in Release directory.
     target = deployment_target || "*"
-    archive = Dir.glob("./#{build_dir}/{iPhoneOS,MacOSX,AppleTVOS}-#{target}-Release/*.{ipa,pkg}").first
+    archive = Dir.glob("#{build_dir}/{iPhoneOS,MacOSX,AppleTVOS}-#{target}-Release/*.{ipa,pkg}").first
     unless archive
       help! "Can't find *.ipa or *.pkg. First, need to create archive file with `rake archive:distribution'."
     end
