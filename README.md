@@ -13,7 +13,7 @@ $ gem install motion-appstore
 If you like to install manually,
 
 ```
-$ git clone https://github.com/Watson1978/motion-appstore.git
+$ git clone https://github.com/HipByte/motion-appstore.git
 $ cd motion-appstore
 $ rake install
 ```
