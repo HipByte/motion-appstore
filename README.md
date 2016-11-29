@@ -1,5 +1,7 @@
 # motion-appstore
 
+[![Gem Version](https://badge.fury.io/rb/motion-appstore.svg)](https://badge.fury.io/rb/motion-appstore)
+
 This is RubyMotion plugin which provides `validate` and `upload` commands for iTunes Connect.
 
 ## Install
