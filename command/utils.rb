@@ -95,7 +95,7 @@ module Utils
   end
 
   def password
-    # retrive password from keychain which might be created by Xcode
+    # retrieve password from keychain which might be created by Xcode
     if verbose?
       puts "----------------------------------------"
       puts " PASSWORD :                             "
@@ -107,7 +107,7 @@ module Utils
       end
     }
 
-    # retrive password by user input
+    # retrieve password by user input
     begin
       require 'io/console'
     rescue LoadError
