@@ -25,15 +25,15 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 module Utils
-  ALTOOL = "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/altool"
+  XCRUN = "/usr/bin/xcrun"
 
   def altool(arg)
     if verbose?
       puts "----------------------------------------"
       puts " COMMAND :                              "
-      puts "\"#{ALTOOL}\" #{arg}"
+      puts "\"#{XCRUN}\" altool #{arg}"
     end
-    message = `\"#{ALTOOL}\" #{arg} 2>&1`
+    message = `\"#{XCRUN}\" altool #{arg} 2>&1`
     if verbose?
       puts "----------------------------------------"
       puts " RETURN :                               "
@@ -48,12 +48,12 @@ module Utils
 
   CONFIG_KEY = %w(
     build_dir
-    deployment_target      
+    deployment_target
   )
 
   def config
     unless File.exist?('Rakefile')
-      help! "Run on root directoy of RubyMotion project."
+      help! "Run on root directory of RubyMotion project."
     end
 
     unless @config
